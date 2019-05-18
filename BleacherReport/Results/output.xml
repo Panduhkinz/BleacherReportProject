@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.1 (Python 3.7.3 on win32)" generated="20190517 19:49:12.192" rpa="false">
+<suite id="s1" name="HomeTest" source="C:\Users\Trevor\PycharmProjects\BleacherReport\Tests\HomeTest.robot">
+<kw name="Insert Tag Data" library="Common" type="setup">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>I am setting up the test data...</arg>
+</arguments>
+<msg timestamp="20190517 19:49:12.484" level="INFO">I am setting up the test data...</msg>
+<status status="PASS" starttime="20190517 19:49:12.484" endtime="20190517 19:49:12.484"></status>
+</kw>
+<kw name="Set Environment Variable" library="OperatingSystem">
+<doc>Sets an environment variable to a specified value.</doc>
+<arguments>
+<arg>webdriver.chrome.driver</arg>
+<arg>${EXEC_DIR}\\Resources\\Drivers\\chromedriver.exe</arg>
+</arguments>
+<msg timestamp="20190517 19:49:12.484" level="INFO">Environment variable 'webdriver.chrome.driver' set to value 'C:\Users\Trevor\PycharmProjects\BleacherReport\Resources\Drivers\chromedriver.exe'.</msg>
+<status status="PASS" starttime="20190517 19:49:12.484" endtime="20190517 19:49:12.484"></status>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>about:blank</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20190517 19:49:12.485" level="INFO">Opening browser 'Chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20190517 19:49:12.485" endtime="20190517 19:49:15.122"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20190517 19:49:15.122" endtime="20190517 19:49:16.249"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:12.484" endtime="20190517 19:49:16.249"></status>
+</kw>
+<test id="s1-t1" name="Verify the user can log in via email">
+<kw name="Begin Web Test" library="Common" type="setup">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the active browser instance to the provided ``url``.</doc>
+<arguments>
+<arg>${START_URL}</arg>
+</arguments>
+<msg timestamp="20190517 19:49:16.250" level="INFO">Opening url 'https://bleacherreport.com/'</msg>
+<status status="PASS" starttime="20190517 19:49:16.250" endtime="20190517 19:49:20.035"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:16.250" endtime="20190517 19:49:20.035"></status>
+</kw>
+<kw name="Load Home Page" library="BleacherReport">
+<kw name="Load" library="HomePage">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the active browser instance to the provided ``url``.</doc>
+<arguments>
+<arg>${START_URL}</arg>
+</arguments>
+<msg timestamp="20190517 19:49:20.036" level="INFO">Opening url 'https://bleacherreport.com/'</msg>
+<status status="PASS" starttime="20190517 19:49:20.036" endtime="20190517 19:49:22.229"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:20.036" endtime="20190517 19:49:22.229"></status>
+</kw>
+<kw name="Dismiss Privacy Notice" library="HomePage">
+<kw name="Get Element Count" library="SeleniumLibrary">
+<doc>Returns number of elements matching ``locator``.</doc>
+<arguments>
+<arg>xpath://*[contains(@class, 'privacy_notice')]</arg>
+</arguments>
+<assign>
+<var>${present}</var>
+</assign>
+<msg timestamp="20190517 19:49:22.241" level="INFO">${present} = 1</msg>
+<status status="PASS" starttime="20190517 19:49:22.230" endtime="20190517 19:49:22.241"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${present} &gt; 0</arg>
+<arg>click button</arg>
+<arg>xpath://*[contains(@class, 'privacy_notice')]//button</arg>
+</arguments>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[contains(@class, 'privacy_notice')]//button</arg>
+</arguments>
+<msg timestamp="20190517 19:49:22.242" level="INFO">Clicking button 'xpath://*[contains(@class, 'privacy_notice')]//button'.</msg>
+<status status="PASS" starttime="20190517 19:49:22.242" endtime="20190517 19:49:22.339"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:22.241" endtime="20190517 19:49:22.339"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:22.229" endtime="20190517 19:49:22.339"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:20.035" endtime="20190517 19:49:22.339"></status>
+</kw>
+<kw name="Initiate Login Via Email" library="BleacherReport">
+<arguments>
+<arg>${TEST_EMAIL}</arg>
+<arg>${TEST_PASSWORD}</arg>
+</arguments>
+<kw name="Click on Login" library="HomePage">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>2 min</arg>
+<arg>5 sec</arg>
+<arg>click element</arg>
+<arg>xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a</arg>
+</arguments>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a</arg>
+</arguments>
+<msg timestamp="20190517 19:49:22.341" level="INFO">Clicking element 'xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a'.</msg>
+<status status="PASS" starttime="20190517 19:49:22.341" endtime="20190517 19:49:23.095"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:22.340" endtime="20190517 19:49:23.096"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:22.340" endtime="20190517 19:49:23.096"></status>
+</kw>
+<kw name="Verify Page Load" library="LoginPage">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>2 min</arg>
+<arg>5 sec</arg>
+<arg>wait until element is visible</arg>
+<arg>class:chooseLoginMethod</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>class:chooseLoginMethod</arg>
+</arguments>
+<status status="PASS" starttime="20190517 19:49:23.096" endtime="20190517 19:49:23.116"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:23.096" endtime="20190517 19:49:23.116"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:23.096" endtime="20190517 19:49:23.116"></status>
+</kw>
+<kw name="Click on Email Login" library="LoginPage">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>Sign in with Email</arg>
+</arguments>
+<msg timestamp="20190517 19:49:23.117" level="INFO">Clicking button 'Sign in with Email'.</msg>
+<status status="PASS" starttime="20190517 19:49:23.117" endtime="20190517 19:49:23.194"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:23.116" endtime="20190517 19:49:23.194"></status>
+</kw>
+<kw name="Enter Email" library="LoginPage">
+<arguments>
+<arg>${email}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:email</arg>
+<arg>${email}</arg>
+</arguments>
+<msg timestamp="20190517 19:49:23.195" level="INFO">Typing text 'trevor.bennett0@icloud.com' into text field 'name:email'.</msg>
+<status status="PASS" starttime="20190517 19:49:23.195" endtime="20190517 19:49:23.291"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:23.194" endtime="20190517 19:49:23.291"></status>
+</kw>
+<kw name="Enter Password" library="LoginPage">
+<arguments>
+<arg>${password}</arg>
+</arguments>
+<kw name="Input Password" library="SeleniumLibrary">
+<doc>Types the given password into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:password</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20190517 19:49:23.292" level="INFO">Typing password into text field 'name:password'.</msg>
+<status status="PASS" starttime="20190517 19:49:23.291" endtime="20190517 19:49:23.359"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:23.291" endtime="20190517 19:49:23.360"></status>
+</kw>
+<kw name="Submit Credentials" library="LoginPage">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>Sign In</arg>
+</arguments>
+<msg timestamp="20190517 19:49:23.360" level="INFO">Clicking button 'Sign In'.</msg>
+<status status="PASS" starttime="20190517 19:49:23.360" endtime="20190517 19:49:23.414"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3</arg>
+</arguments>
+<msg timestamp="20190517 19:49:26.416" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20190517 19:49:23.414" endtime="20190517 19:49:26.416"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:23.360" endtime="20190517 19:49:26.416"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:22.340" endtime="20190517 19:49:26.416"></status>
+</kw>
+<kw name="Verify User is Logged In" library="BleacherReport">
+<arguments>
+<arg>Trevor</arg>
+</arguments>
+<kw name="Verify Username" library="HomePage">
+<arguments>
+<arg>${username}</arg>
+</arguments>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains exact text ``expected``.</doc>
+<arguments>
+<arg>class:userMenu</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20190517 19:49:26.418" level="INFO">Verifying element 'class:userMenu' contains exact text 'Trevor'.</msg>
+<status status="PASS" starttime="20190517 19:49:26.418" endtime="20190517 19:49:26.461"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:26.417" endtime="20190517 19:49:26.461"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:26.417" endtime="20190517 19:49:26.461"></status>
+</kw>
+<kw name="End Web Test" library="Common" type="teardown">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Test End...</arg>
+</arguments>
+<msg timestamp="20190517 19:49:26.462" level="INFO">Test End...</msg>
+<status status="PASS" starttime="20190517 19:49:26.462" endtime="20190517 19:49:26.462"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:26.461" endtime="20190517 19:49:26.462"></status>
+</kw>
+<doc>Verify that the user can successfully log into the application via a email address.</doc>
+<tags>
+<tag>Smoke</tag>
+</tags>
+<status status="PASS" starttime="20190517 19:49:16.249" endtime="20190517 19:49:26.462" critical="yes"></status>
+</test>
+<test id="s1-t2" name="Verify the user can log out of an account">
+<kw name="Begin Web Test" library="Common" type="setup">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the active browser instance to the provided ``url``.</doc>
+<arguments>
+<arg>${START_URL}</arg>
+</arguments>
+<msg timestamp="20190517 19:49:26.468" level="INFO">Opening url 'https://bleacherreport.com/'</msg>
+<status status="PASS" starttime="20190517 19:49:26.467" endtime="20190517 19:49:28.478"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:26.467" endtime="20190517 19:49:28.478"></status>
+</kw>
+<kw name="Load Home Page" library="BleacherReport">
+<kw name="Load" library="HomePage">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the active browser instance to the provided ``url``.</doc>
+<arguments>
+<arg>${START_URL}</arg>
+</arguments>
+<msg timestamp="20190517 19:49:28.479" level="INFO">Opening url 'https://bleacherreport.com/'</msg>
+<status status="PASS" starttime="20190517 19:49:28.479" endtime="20190517 19:49:30.318"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:28.479" endtime="20190517 19:49:30.318"></status>
+</kw>
+<kw name="Dismiss Privacy Notice" library="HomePage">
+<kw name="Get Element Count" library="SeleniumLibrary">
+<doc>Returns number of elements matching ``locator``.</doc>
+<arguments>
+<arg>xpath://*[contains(@class, 'privacy_notice')]</arg>
+</arguments>
+<assign>
+<var>${present}</var>
+</assign>
+<msg timestamp="20190517 19:49:30.326" level="INFO">${present} = 0</msg>
+<status status="PASS" starttime="20190517 19:49:30.319" endtime="20190517 19:49:30.326"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${present} &gt; 0</arg>
+<arg>click button</arg>
+<arg>xpath://*[contains(@class, 'privacy_notice')]//button</arg>
+</arguments>
+<status status="PASS" starttime="20190517 19:49:30.326" endtime="20190517 19:49:30.326"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:30.318" endtime="20190517 19:49:30.328"></status>
+</kw>
+<status status="PASS" starttime="20190517 19:49:28.478" endtime="20190517 19:49:30.328"></status>
+</kw>
+<kw name="Initiate Login Via Email" library="BleacherReport">
+<arguments>
+<arg>${TEST_EMAIL}</arg>
+<arg>${TEST_PASSWORD}</arg>
+</arguments>
+<kw name="Click on Login" library="HomePage">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>2 min</arg>
+<arg>5 sec</arg>
+<arg>click element</arg>
+<arg>xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a</arg>
+</arguments>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a</arg>
+</arguments>
+<msg timestamp="20190517 19:49:30.329" level="INFO">Clicking element 'xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20190517 19:49:31.275" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-56.png"&gt;&lt;img src="selenium-screenshot-56.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20190517 19:49:30.336" endtime="20190517 19:49:31.276"></status>
+</kw>
+<msg timestamp="20190517 19:49:31.277" level="FAIL">Element with locator 'xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a' not found.</msg>
+<status status="FAIL" starttime="20190517 19:49:30.329" endtime="20190517 19:49:31.277"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a</arg>
+</arguments>
+<msg timestamp="20190517 19:49:36.279" level="INFO">Clicking element 'xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20190517 19:49:37.186" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-57.png"&gt;&lt;img src="selenium-screenshot-57.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20190517 19:49:36.286" endtime="20190517 19:49:37.187"></status>
+</kw>
+<msg timestamp="20190517 19:49:37.187" level="FAIL">Element with locator 'xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a' not found.</msg>
+<status status="FAIL" starttime="20190517 19:49:36.279" endtime="20190517 19:49:37.187"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a</arg>
+</arguments>
+<msg timestamp="20190517 19:49:42.188" level="INFO">Clicking element 'xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20190517 19:49:43.110" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-58.png"&gt;&lt;img src="selenium-screenshot-58.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20190517 19:49:42.196" endtime="20190517 19:49:43.110"></status>
+</kw>
+<msg timestamp="20190517 19:49:43.111" level="FAIL">Element with locator 'xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a' not found.</msg>
+<status status="FAIL" starttime="20190517 19:49:42.188" endtime="20190517 19:49:43.111"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a</arg>
+</arguments>
+<msg timestamp="20190517 19:49:48.112" level="INFO">Clicking element 'xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20190517 19:49:49.027" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-59.png"&gt;&lt;img src="selenium-screenshot-59.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20190517 19:49:48.131" endtime="20190517 19:49:49.028"></status>
+</kw>
+<msg timestamp="20190517 19:49:49.028" level="FAIL">Element with locator 'xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a' not found.</msg>
+<status status="FAIL" starttime="20190517 19:49:48.112" endtime="20190517 19:49:49.028"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a</arg>
+</arguments>
+<msg timestamp="20190517 19:49:54.029" level="INFO">Clicking element 'xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20190517 19:49:54.938" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-60.png"&gt;&lt;img src="selenium-screenshot-60.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20190517 19:49:54.036" endtime="20190517 19:49:54.938"></status>
+</kw>
+<msg timestamp="20190517 19:49:54.939" level="FAIL">Element with locator 'xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a' not found.</msg>
+<status status="FAIL" starttime="20190517 19:49:54.029" endtime="20190517 19:49:54.939"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a</arg>
+</arguments>
+<msg timestamp="20190517 19:49:59.940" level="INFO">Clicking element 'xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20190517 19:50:00.883" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-61.png"&gt;&lt;img src="selenium-screenshot-61.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20190517 19:49:59.948" endtime="20190517 19:50:00.883"></status>
+</kw>
+<msg timestamp="20190517 19:50:00.884" level="FAIL">Element with locator 'xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a' not found.</msg>
+<status status="FAIL" starttime="20190517 19:49:59.940" endtime="20190517 19:50:00.884"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a</arg>
+</arguments>
+<msg timestamp="20190517 19:50:05.884" level="INFO">Clicking element 'xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20190517 19:50:06.795" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-62.png"&gt;&lt;img src="selenium-screenshot-62.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20190517 19:50:05.893" endtime="20190517 19:50:06.795"></status>
+</kw>
+<msg timestamp="20190517 19:50:06.796" level="FAIL">Element with locator 'xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a' not found.</msg>
+<status status="FAIL" starttime="20190517 19:50:05.884" endtime="20190517 19:50:06.796"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a</arg>
+</arguments>
+<msg timestamp="20190517 19:50:11.798" level="INFO">Clicking element 'xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20190517 19:50:12.731" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-63.png"&gt;&lt;img src="selenium-screenshot-63.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20190517 19:50:11.807" endtime="20190517 19:50:12.731"></status>
+</kw>
+<msg timestamp="20190517 19:50:12.731" level="FAIL">Element with locator 'xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a' not found.</msg>
+<status status="FAIL" starttime="20190517 19:50:11.798" endtime="20190517 19:50:12.732"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a</arg>
+</arguments>
+<msg timestamp="20190517 19:50:17.735" level="INFO">Clicking element 'xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20190517 19:50:18.672" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-64.png"&gt;&lt;img src="selenium-screenshot-64.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20190517 19:50:17.760" endtime="20190517 19:50:18.672"></status>
+</kw>
+<msg timestamp="20190517 19:50:18.673" level="FAIL">Element with locator 'xpath://*[@id="app"]/div/header/div/div/ul/li[2]/a' not found.</msg>
+<status status="FAIL" starttime="20190517 19:50:17.734" endtime="20190517 19:50:18.673"></status>
+</kw>
+<errors>
+<msg timestamp="20190517 19:50:20.140" level="ERROR">Execution stopped by user.</msg>
+</errors>
+</robot>
