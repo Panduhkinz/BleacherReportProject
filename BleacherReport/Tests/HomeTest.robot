@@ -9,7 +9,7 @@ Suite Teardown  Clean Test Data
 *** Variables ***
 ${START_URL} =          https://bleacherreport.com/
 ${BROWSER} =            Chrome
-${TEST_EMAIL} =         trevor.bennett0@icloud.com
+${TEST_EMAIL} =         TestEmail
 ${TEST_PASSWORD} =      Test1234!
 
 *** Test Cases ***
